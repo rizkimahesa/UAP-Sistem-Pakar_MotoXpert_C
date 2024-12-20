@@ -8,10 +8,9 @@
   <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-  <!-- Navbar -->
   <div class="navbar navbar-expand-lg navbar-light">
     <div class="container-fluid">
-      <div class="logo">Diagnosis Motor Matic</div>
+      <div class="logo"><img src="img/tools-and-utensils.png" alt="" class="logo-img">MotoXpert</div>
       <div class="menu ml-auto">
         <a href="main.html">Home</a>
         <a href="diagnosis.html">Diagnosis</a>
@@ -19,63 +18,16 @@
       </div>
     </div>
   </div>
-
-  <!-- Diagnosis Section -->
+  
   <div class="section">
     <div class="container">
       <h1 class="text-center">Diagnosa Kerusakan Motor Matic</h1>
-      <p class="intro mt-4">Silakan pilih gejala yang terjadi pada motor Anda untuk memulai diagnosis:</p>
+      <p class="intro mt-4">Silakan jawab pertanyaan berikut untuk memulai diagnosis:</p>
 
-      <!-- Pilihan Gejala Mesin -->
-      <div class="form-check">
-        <input type="checkbox" class="form-check-input" id="suara_mesin_kasar" onclick="setGejala('suara_mesin_kasar', this.checked)">
-        <label class="form-check-label" for="suara_mesin_kasar">Suara mesin kasar</label>
-      </div>
-
-      <div class="form-check">
-        <input type="checkbox" class="form-check-input" id="mesin_susah_nyala" onclick="setGejala('mesin_susah_nyala', this.checked)">
-        <label class="form-check-label" for="mesin_susah_nyala">Mesin susah nyala</label>
-      </div>
-
-      <div class="form-check">
-        <input type="checkbox" class="form-check-input" id="terdengar_kasar_pada_mesin" onclick="setGejala('terdengar_kasar_pada_mesin', this.checked)">
-        <label class="form-check-label" for="terdengar_kasar_pada_mesin">Terdengar suara kasar pada bagian mesin</label>
-      </div>
-
-      <div class="form-check">
-        <input type="checkbox" class="form-check-input" id="suara_mesin_kasar_getaran" onclick="setGejala('suara_mesin_kasar_getaran', this.checked)">
-        <label class="form-check-label" for="suara_mesin_kasar_getaran">Suara mesin kasar dan menimbulkan getaran</label>
-      </div>
-
-      <div class="form-check">
-        <input type="checkbox" class="form-check-input" id="kebocoran_oli" onclick="setGejala('kebocoran_oli', this.checked)">
-        <label class="form-check-label" for="kebocoran_oli">Terdapat kebocoran oli pada bagian mesin</label>
-      </div>
-
-      <!-- Pilihan Gejala Kelistrikan -->
-      <div class="form-check">
-        <input type="checkbox" class="form-check-input" id="aki_cepat_habis" onclick="setGejala('aki_cepat_habis', this.checked)">
-        <label class="form-check-label" for="aki_cepat_habis">Aki cepat habis atau drop</label>
-      </div>
-
-      <div class="form-check">
-        <input type="checkbox" class="form-check-input" id="kabel_lampu_putus" onclick="setGejala('kabel_lampu_putus', this.checked)">
-        <label class="form-check-label" for="kabel_lampu_putus">Kabel lampu cepat putus</label>
-      </div>
-
-      <div class="form-check">
-        <input type="checkbox" class="form-check-input" id="kabel_stater_mati" onclick="setGejala('kabel_stater_mati', this.checked)">
-        <label class="form-check-label" for="kabel_stater_mati">Kabel stater mati</label>
-      </div>
-
-      <div class="form-check">
-        <input type="checkbox" class="form-check-input" id="motor_mati_total" onclick="setGejala('motor_mati_total', this.checked)">
-        <label class="form-check-label" for="motor_mati_total">Motor mati total</label>
-      </div>
-
-      <!-- Diagnosis Result -->
-      <div class="mt-4 text-center">
-        <button class="btn btn-primary btn-lg" onclick="diagnosa()">Mulai Diagnosis</button>
+      <div class="mt-4 text-center" id="pertanyaan-container">
+        <h3 id="pertanyaan"></h3>
+        <button class="btn btn-success" id="ya-button" onclick="jawab('ya')">Ya</button>
+        <button class="btn btn-danger" id="tidak-button" onclick="jawab('tidak')">Tidak</button>
       </div>
 
       <div class="mt-4 text-center">
@@ -84,7 +36,6 @@
     </div>
   </div>
 
-  <!-- Menyertakan Bootstrap dan FontAwesome JS -->
   <script src="https://kit.fontawesome.com/a076d05399.js"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
