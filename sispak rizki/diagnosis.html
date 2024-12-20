@@ -102,21 +102,26 @@
 
   <div class="section">
     <div class="container">
-      <h1 class="text-center">Diagnosa Kerusakan Motor Matic</h1>
-      <p class="intro mt-4">Silakan jawab pertanyaan berikut untuk memulai diagnosis:</p>
+      <h1 class="text-center font-weight-bold">Diagnosis Kerusakan Motor Matic</h1>
+
+      <!-- Intro text, dynamically updated -->
+      <p class="intro mt-4 text-center" id="intro-text">Silakan jawab pertanyaan berikut untuk memulai diagnosis:</p>
 
       <div class="mt-4 text-center" id="pertanyaan-container">
-        <h3 id="pertanyaan"></h3>
-        <button class="btn btn-success" id="ya-button" onclick="jawab('ya')">Ya</button>
-        <button class="btn btn-danger" id="tidak-button" onclick="jawab('tidak')">Tidak</button>
-      </div>
+        <div id="pertanyaan-box">
+          <h3 id="pertanyaan"></h3>
+          <div class="mt-4">
+            <button class="btn btn-success mr-2" id="ya-button" onclick="jawab('ya')">Ya</button>
+            <button class="btn btn-danger mr-2" id="tidak-button" onclick="jawab('tidak')">Tidak</button>
+          </div>
+        </div>
+      </div>      
 
-      <div class="mt-4 text-center">
+      <div class="mt-4 text-center" id="hasil-diagnosis-container" style="display: none;">
+        <h3 id="intro-text-hasil"></h3>
         <h3 id="hasil-diagnosis"></h3>
       </div>
-    </div>
-  </div>
-  
+
       <!-- Pesan untuk mengulangi diagnosis -->
       <div class="mt-4 text-center" id="ulang-container" style="display: none;">
         <div id="ulang-box">
