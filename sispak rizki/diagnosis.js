@@ -19,7 +19,6 @@ const pertanyaanList = [
 function tampilkanPertanyaan() {
   if (pertanyaanIndex < pertanyaanList.length) {
     document.getElementById("pertanyaan").innerText = pertanyaanList[pertanyaanIndex].text;
-    document.getElementById("intro-text").innerText = "Silakan jawab pertanyaan berikut untuk memulai diagnosis:";
   } else {
     diagnosa();
   }
@@ -32,186 +31,98 @@ function jawab(jawaban) {
   tampilkanPertanyaan();
 }
 
+function hitungPersentase(gejalaTerdeteksi, totalGejala) {
+  return Math.round((gejalaTerdeteksi / totalGejala) * 100) + "%";
+}
+
 function diagnosa() {
   let hasil = [];
   let rekomendasi = [];
 
-  if (gejala["starter_sulit"] && gejala["bahan_bakar_kosong"] && gejala["starter_sulit_meski_bahan_bakar_ada"]) {
-    hasil.push({
+  const diagnosaList = [
+    {
       kerusakan: "Bahan bakar habis",
-      jawaban: [
-        { pertanyaan: pertanyaanList[0].text, jawaban: gejala["starter_sulit"] ? 'ya' : 'tidak' },
-        { pertanyaan: pertanyaanList[1].text, jawaban: gejala["bahan_bakar_kosong"] ? 'ya' : 'tidak' },
-        { pertanyaan: pertanyaanList[10].text, jawaban: gejala["starter_sulit_meski_bahan_bakar_ada"] ? 'ya' : 'tidak' }
-      ],
-      persentase: "100%"
-    });
-    rekomendasi.push("Periksa tangki bahan bakar dan isi jika kosong.");
-  }
-
-  if (gejala["starter_sulit"] && gejala["bahan_bakar_kosong"] && gejala["lampu_speedometer_mati"] && gejala["starter_sulit_meski_bahan_bakar_ada"]) {
-    hasil.push({
+      gejala: ["starter_sulit", "bahan_bakar_kosong", "starter_sulit_meski_bahan_bakar_ada"],
+      rekomendasi: "Periksa tangki bahan bakar dan isi jika kosong."
+    },
+    {
       kerusakan: "Selang bahan bakar tersumbat",
-      jawaban: [
-        { pertanyaan: pertanyaanList[0].text, jawaban: gejala["starter_sulit"] ? 'ya' : 'tidak' },
-        { pertanyaan: pertanyaanList[1].text, jawaban: gejala["bahan_bakar_kosong"] ? 'ya' : 'tidak' },
-        { pertanyaan: pertanyaanList[2].text, jawaban: gejala["lampu_speedometer_mati"] ? 'ya' : 'tidak' },
-        { pertanyaan: pertanyaanList[10].text, jawaban: gejala["starter_sulit_meski_bahan_bakar_ada"] ? 'ya' : 'tidak' }
-      ],
-      persentase: "90 %"
-    });
-    rekomendasi.push("Periksa selang bahan bakar dan bersihkan jika tersumbat.");
-  }
-
-  if (gejala["lampu_speedometer_mati"] && gejala["starter_sulit"] && gejala["dynamo_panas"] && gejala["motor_tidak_bertenaga"]) {
-    hasil.push({
+      gejala: ["starter_sulit", "bahan_bakar_kosong", "lampu_speedometer_mati", "starter_sulit_meski_bahan_bakar_ada"],
+      rekomendasi: "Periksa selang bahan bakar dan bersihkan jika tersumbat."
+    },
+    {
       kerusakan: "Baterai soak",
-      jawaban: [
-        { pertanyaan: pertanyaanList[2].text, jawaban: gejala["lampu_speedometer_mati"] ? 'ya' : 'tidak' },
-        { pertanyaan: pertanyaanList[0].text, jawaban: gejala["starter_sulit"] ? 'ya' : 'tidak' },
-        { pertanyaan: pertanyaanList[6].text, jawaban: gejala["dynamo_panas"] ? 'ya' : 'tidak' },
-        { pertanyaan: pertanyaanList[11].text, jawaban: gejala["motor_tidak_bertenaga"] ? 'ya' : 'tidak' }
-      ],
-      persentase: "85%"
-    });
-    rekomendasi.push("Ganti baterai motor Anda.");
-  }
-
-  if (gejala["lampu_sein_tidak_berkedip"] && gejala["lampu_motor_mati"] && gejala["lampu_cepat_putus"]) {
-    hasil.push({
+      gejala: ["lampu_speedometer_mati", "starter_sulit", "dynamo_panas", "motor_tidak_bertenaga"],
+      rekomendasi: "Ganti baterai motor Anda."
+    },
+    {
       kerusakan: "Flasher rusak",
-      jawaban: [
-        { pertanyaan: pertanyaanList[3].text, jawaban: gejala["lampu_sein_tidak_berkedip"] ? 'ya' : 'tidak' },
-        { pertanyaan: pertanyaanList[4].text, jawaban: gejala["lampu_motor_mati"] ? 'ya' : 'tidak' },
-        { pertanyaan: pertanyaanList[5].text, jawaban: gejala["lampu_cepat_putus"] ? 'ya' : 'tidak' }
-      ],
-      persentase: "75%"
-    });
-    rekomendasi.push("Periksa flasher dan ganti jika diperlukan.");
-  }
-
-  if (gejala["lampu_motor_mati"] && gejala["lampu_cepat_putus"] && gejala["starter_sulit"] && gejala["dynamo_panas"]) {
-    hasil.push({
+      gejala: ["lampu_sein_tidak_berkedip", "lampu_motor_mati", "lampu_cepat_putus"],
+      rekomendasi: "Periksa flasher dan ganti jika diperlukan."
+    },
+    {
       kerusakan: "Sekring putus",
-      jawaban: [
-        { pertanyaan: pertanyaanList[4].text, jawaban: gejala["lampu_motor_mati"] ? 'ya' : 'tidak' },
-        { pertanyaan: pertanyaanList[5].text, jawaban: gejala["lampu_cepat_putus"] ? 'ya' : 'tidak' },
-        { pertanyaan: pertanyaanList[0].text, jawaban: gejala["starter_sulit"] ? 'ya' : 'tidak' },
-        { pertanyaan: pertanyaanList[6].text, jawaban: gejala["dynamo_panas"] ? 'ya' : 'tidak' }
-      ],
-      persentase: "80%"
-    });
-    rekomendasi.push("Periksa sekring dan ganti jika putus.");
-  }
-
-  if (gejala["lampu_cepat_putus"] && gejala["starter_sulit"] && gejala["motor_tidak_bertenaga"] && gejala["lampu_motor_mati"]) {
-    hasil.push({
+      gejala: ["lampu_motor_mati", "lampu_cepat_putus", "starter_sulit", "dynamo_panas"],
+      rekomendasi: "Periksa sekring dan ganti jika putus."
+    },
+    {
       kerusakan: "Kiprok rusak",
-      jawaban: [
-        { pertanyaan: pertanyaanList[5].text, jawaban: gejala["lampu_cepat_putus"] ? 'ya' : 'tidak' },
-        { pertanyaan: pertanyaanList[0].text, jawaban: gejala["starter_sulit"] ? 'ya' : 'tidak' },
-        { pertanyaan: pertanyaanList[11].text, jawaban: gejala["motor_tidak_bertenaga"] ? 'ya' : 'tidak' },
-        { pertanyaan: pertanyaanList[4].text, jawaban: gejala["lampu_motor_mati"] ? 'ya' : 'tidak' }
-      ],
-      persentase: "85%"
-    });
-    rekomendasi.push("Periksa kiprok dan ganti jika rusak.");
-  }
-
-  if (gejala["dynamo_panas"] && gejala["starter_sulit"] && gejala["lampu_speedometer_mati"] && gejala["starter_sulit_meski_bahan_bakar_ada"]) {
-    hasil.push({
+      gejala: ["lampu_cepat_putus", "starter_sulit", "motor_tidak_bertenaga", "lampu_motor_mati"],
+      rekomendasi: "Periksa kiprok dan ganti jika rusak."
+    },
+    {
       kerusakan: "Dynamo starter rusak",
-      jawaban: [
-        { pertanyaan: pertanyaanList[6].text, jawaban: gejala["dynamo_panas"] ? 'ya' : 'tidak' },
-        { pertanyaan: pertanyaanList[0].text, jawaban: gejala["starter_sulit"] ? 'ya' : 'tidak' },
-        { pertanyaan: pertanyaanList[2].text, jawaban: gejala["lampu_speedometer_mati"] ? 'ya' : 'tidak' },
-        { pertanyaan: pertanyaanList[10].text, jawaban: gejala["starter_sulit_meski_bahan_bakar_ada"] ? 'ya' : 'tidak' }
-      ],
-      persentase: "90%"
-    });
-    rekomendasi.push("Periksa dynamo starter dan lakukan perbaikan.");
-  }
-
-  if (gejala["busi_tidak_memercik"] && gejala["starter_sulit"] && gejala["motor_tidak_bertenaga"] && gejala["asap_putih_knalpot"]) {
-    hasil.push({
+      gejala: ["dynamo_panas", "starter_sulit", "lampu_speedometer_mati", "starter_sulit_meski_bahan_bakar_ada"],
+      rekomendasi: "Periksa dynamo starter dan lakukan perbaikan."
+    },
+    {
       kerusakan: "CDI rusak",
-      jawaban: [
-        { pertanyaan: pertanyaanList[7].text, jawaban: gejala["busi_tidak_memercik"] ? 'ya' : 'tidak' },
-        { pertanyaan: pertanyaanList[0].text, jawaban: gejala["starter_sulit"] ? 'ya' : 'tidak' },
-        { pertanyaan: pertanyaanList[11].text, jawaban: gejala["motor_tidak_bertenaga"] ? 'ya' : 'tidak' },
-        { pertanyaan: pertanyaanList[8].text, jawaban: gejala["asap_putih_knalpot"] ? 'ya' : 'tidak' }
-      ],
-      persentase: "85%"
-    });
-    rekomendasi.push("Periksa CDI dan ganti jika diperlukan.");
-  }
-
-  if (gejala["asap_putih_knalpot"] && gejala["suara_berisik"] && gejala["motor_tidak_bertenaga"] && gejala["starter_sulit_meski_bahan_bakar_ada"]) {
-    hasil.push({
+      gejala: ["busi_tidak_memercik", "starter_sulit", "motor_tidak_bertenaga", "asap_putih_knalpot"],
+      rekomendasi: "Periksa CDI dan ganti jika diperlukan."
+    },
+    {
       kerusakan: "Ring piston rusak",
-      jawaban: [
-        { pertanyaan: pertanyaanList[8].text, jawaban: gejala["asap_putih_knalpot"] ? 'ya' : 'tidak' },
-        { pertanyaan: pertanyaanList[9].text, jawaban: gejala["suara_berisik"] ? 'ya' : 'tidak' },
-        { pertanyaan: pertanyaanList[11].text, jawaban: gejala["motor_tidak_bertenaga"] ? 'ya' : 'tidak' },
-        { pertanyaan: pertanyaanList[10].text, jawaban: gejala["starter_sulit_meski_bahan_bakar_ada"] ? 'ya' : 'tidak' }
-      ],
-      persentase: "80%"
-    });
-    rekomendasi.push("Periksa ring piston dan lakukan perbaikan segera.");
-  }
-
-  if (gejala["suara_berisik"] && !gejala["asap_putih_knalpot"] && gejala["starter_sulit"] && gejala["lampu_cepat_putus"]) {
-    hasil.push({
+      gejala: ["asap_putih_knalpot", "suara_berisik", "motor_tidak_bertenaga", "starter_sulit_meski_bahan_bakar_ada"],
+      rekomendasi: "Periksa ring piston dan lakukan perbaikan segera."
+    },
+    {
       kerusakan: "Setelan katup terlalu rapat",
-      jawaban: [
-        { pertanyaan: pertanyaanList[9].text, jawaban: gejala["suara_berisik"] ? 'ya' : 'tidak' },
-        { pertanyaan: pertanyaanList[8].text, jawaban: !gejala["asap_putih_knalpot"] ? 'tidak' : 'ya' },
-        { pertanyaan: pertanyaanList[0].text, jawaban: gejala["starter_sulit"] ? 'ya' : 'tidak' },
-        { pertanyaan: pertanyaanList[5].text, jawaban: gejala["lampu_cepat_putus"] ? 'ya' : 'tidak' }
-      ],
-      persentase: "75%"
-    });
-    rekomendasi.push("Setel ulang katup mesin sesuai standar.");
-  }
+      gejala: ["suara_berisik", "!asap_putih_knalpot", "starter_sulit", "lampu_cepat_putus"],
+      rekomendasi: "Setel ulang katup mesin sesuai standar."
+    }
+  ];
+
+  diagnosaList.forEach(item => {
+    const gejalaTerpenuhi = item.gejala.filter(key => gejala[key]).length;
+    const totalGejala = item.gejala.length;
+    if (gejalaTerpenuhi > 0) {
+      hasil.push({
+        kerusakan: item.kerusakan,
+        jawaban: item.gejala.map(key => ({
+          pertanyaan: pertanyaanList.find(p => p.key === key)?.text || key,
+          jawaban: gejala[key] ? "ya" : "tidak"
+        })),
+        persentase: hitungPersentase(gejalaTerpenuhi, totalGejala)
+      });
+      rekomendasi.push(item.rekomendasi);
+    }
+  });
 
   if (hasil.length > 0) {
-    let hasilText = "";
+    let hasilText = "Hasil Diagnosis:\n";
     hasil.forEach((item, index) => {
-      hasilText += `<div class="kerusakan-item">${index + 1}. Kerusakan: <strong>${item.kerusakan}</strong></div>`;
-      hasilText += `<div class="pertanyaan-sebelumnya">Pertanyaan sebelumnya:</div>`;
-
+      hasilText += `${index + 1}. Kerusakan: ${item.kerusakan}\n`;
+      hasilText += `   Pertanyaan sebelumnya:\n`;
       item.jawaban.forEach(jawaban => {
-        hasilText += `<div class="jawaban-item">${jawaban.pertanyaan} : ${jawaban.jawaban}</div>`;
+        hasilText += `   - ${jawaban.pertanyaan} : ${jawaban.jawaban}\n`;
       });
-
-      hasilText += `<div class="persentase">Nilai keyakinan: ${item.persentase}</div>`;
+      hasilText += `   Nilai keyakinan: ${item.persentase}\n\n`;
     });
-    hasilText += "Rekomendasi:\n" + rekomendasi.join('\n');
-    document.getElementById("hasil-diagnosis").innerHTML = hasilText;
+    hasilText += "Rekomendasi:\n" + rekomendasi.join("\n");
+    document.getElementById("hasil-diagnosis").innerText = hasilText;
   } else {
     document.getElementById("hasil-diagnosis").innerText = "Tidak ada kerusakan yang terdeteksi berdasarkan jawaban Anda.";
   }
-
-  // Ubah teks intro menjadi hasil diagnosis
-  document.getElementById("intro-text").innerText = "Diagnosis Kerusakan Motor Anda yaitu:";
-
-  // Tampilkan elemen hasil diagnosis
-  document.getElementById("pertanyaan-container").style.display = "none";
-  document.getElementById("ulang-container").style.display = 'block';
-  document.getElementById("hasil-diagnosis-container").style.display = 'block'; // Menampilkan hasil
 }
 
-function ulangiDiagnosis() {
-  // Reset semua variabel
-  gejala = {};
-  pertanyaanIndex = 0;
-
-  // Reset tampilan
-  document.getElementById("pertanyaan-container").style.display = "block";
-  document.getElementById("intro-text").innerText = "Silakan jawab pertanyaan berikut untuk memulai diagnosis:";
-  document.getElementById("ulang-container").style.display = "none";
-  document.getElementById("hasil-diagnosis-container").style.display = "none";
-}
-
-// Memulai diagnosis
 tampilkanPertanyaan();
