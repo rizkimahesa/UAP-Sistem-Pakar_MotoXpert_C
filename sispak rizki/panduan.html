@@ -6,12 +6,56 @@
   <title>Panduan Penggunaan Diagnosis Motor Matic</title>
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/main.css"> <!-- Menghubungkan file CSS tambahan -->
+  <style>
+    /* Navbar Styling */
+    .navbar {
+      background-color: #ffffff !important; /* Sama dengan container tengah */
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 10px 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-img {
+      height: 40px; /* Perkecil ukuran logo */
+    }
+
+    .logo-text {
+      margin-left: 10px; /* Beri jarak lebih kanan terhadap logo */
+      font-weight: bold; /* Tulisan bold */
+      color: #3a4d70;
+      font-size: 1.2rem;
+    }
+
+    .menu a {
+      text-decoration: none;
+      color: #3a4d70;
+      font-weight: bold;
+      margin: 0 10px;
+      transition: color 0.3s ease, border-bottom 0.3s ease;
+      border-bottom: 2px solid transparent;
+    }
+
+    .menu a:hover {
+      color: #ff9800; /* Warna orange seperti logo */
+      border-bottom: 2px solid #ff9800; /* Garis bawah saat hover */
+    }
+
+    /* Navbar height adjustment */
+    .navbar-expand-lg {
+      height: 80px; /* Standar tinggi navbar */
+    }
+  </style>
 </head>
 <body>
-  <!-- Navbar -->
   <div class="navbar navbar-expand-lg navbar-light">
     <div class="container-fluid">
-      <div class="logo">Diagnosis Motor Matic</div>
+      <div class="logo"><img src="img/tools-and-utensils.png" alt="" class="logo-img">
+        <span class="logo-text">MotoXpert</span>
+      </div>
       <div class="menu ml-auto">
         <a href="main.html">Home</a>
         <a href="diagnosis.html">Diagnosis</a>
@@ -24,14 +68,14 @@
   <div id="panduan" class="section">
     <div class="container">
       <h1 class="text-center">Panduan Penggunaan Website Diagnosis Motor Matic</h1>
-      <p class="intro mt-4">Sistem diagnosis motor matic ini memungkinkan Anda untuk mendiagnosis kerusakan motor secara mandiri. Anda hanya perlu memasukkan 3 gejala yang terjadi pada motor Anda dan sistem akan memberikan rekomendasi mengenai kemungkinan kerusakan yang terjadi.</p>
+      <p class="intro mt-4 ">Sistem diagnosis motor matic ini memungkinkan Anda untuk mendiagnosis kerusakan motor secara mandiri. Anda hanya perlu mengeklik "Ya" atau "Tidak" pertanyaan yang ditampilkan dengan mencocokan pertanyaan terkait gejala kerusakan motor dengan gejala yang terjadi pada motor Anda dan sistem akan memberikan rekomendasi mengenai kemungkinan kerusakan yang terjadi.</p>
 
       <div class="mt-5">
         <h3>Cara Menggunakan Sistem Diagnosis:</h3>
         <ul>
-          <li><strong>Langkah 1:</strong> Masukkan gejala pertama yang terjadi pada motor Anda. Contoh: Mesin susah hidup, suara aneh, atau motor bergetar.</li>
-          <li><strong>Langkah 2:</strong> Masukkan gejala kedua yang Anda rasakan. Misalnya: Sepeda motor tidak bisa dipacu atau rpm mesin tidak stabil.</li>
-          <li><strong>Langkah 3:</strong> Masukkan gejala ketiga yang terjadi. Misalnya: Lampu indikator menyala, atau motor sering mati mendadak.</li>
+          <li><strong>Langkah 1:</strong> Memilih antara "Ya" dan "Tidak" terkait Gejala yang Anda Alami Saat Ini</li>
+          <li><strong>Langkah 2:</strong> Memilih antara "Ya" dan "Tidak" terkait Gejala yang Anda Alami Saat Ini kembali</li>
+          <li><strong>Langkah 3:</strong> Jawab Pertanyaan terkait Gejala tersebut hingga Pertanyaan Habis, maka Akan Muncul Hasil Diagnosisnya.</li>
         </ul>
       </div>
 
@@ -39,11 +83,11 @@
         <h3>Contoh Penggunaan:</h3>
         <p>Misalnya, jika motor Anda memiliki gejala sebagai berikut:</p>
         <ul>
-          <li>Gejala pertama: Mesin susah hidup</li>
-          <li>Gejala kedua: Suara mesin berisik</li>
-          <li>Gejala ketiga: Motor bergetar saat dikendarai</li>
+          <li>Q: Apakah motor Anda sulit dinyalakan menggunakan elektrik starter?, A: Ya</li>
+          <li>Q: Apakah bahan bakar di karburator terlihat sangat sedikit atau kosong?, A: Ya</li>
+          <li>Q: Apakah lampu kontrol di speedometer tidak menyala saat kunci ON?, A: Tidak, dan seterusnya hingga muncul hasil diagnosisnya.</li>
         </ul>
-        <p>Anda dapat memasukkan ketiga gejala tersebut ke dalam sistem diagnosis. Sistem akan menganalisisnya dan memberikan kemungkinan kerusakan, seperti masalah pada sistem pengapian atau gangguan pada komponen mesin.</p>
+        <p>Setelah Anda menjawab pertanyaan terakhir, maka akan muncul hasil diagnosisnya seusai dengan data kami dan pilihan yang Anda jawab berdasarkan kejadian yang sedang dialami.</p>
       </div>
 
       <div class="mt-5 text-center">
