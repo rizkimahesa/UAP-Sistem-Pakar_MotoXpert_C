@@ -7,11 +7,56 @@
   <!-- Menyertakan Bootstrap CSS -->
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/main.css"> <!-- Menghubungkan file CSS tambahan -->
+  <style>
+    /* Navbar Styling */
+    .navbar {
+      background-color: #ffffff !important; /* Sama dengan container tengah */
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 10px 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-img {
+      height: 40px; /* Perkecil ukuran logo */
+    }
+
+    .logo-text {
+      margin-left: 10px; /* Beri jarak lebih kanan terhadap logo */
+      font-weight: bold; /* Tulisan bold */
+      color: #3a4d70;
+      font-size: 1.2rem;
+    }
+
+    .menu a {
+      text-decoration: none;
+      color: #3a4d70;
+      font-weight: bold;
+      margin: 0 10px;
+      transition: color 0.3s ease, border-bottom 0.3s ease;
+      border-bottom: 2px solid transparent;
+    }
+
+    .menu a:hover {
+      color: #ff9800; /* Warna orange seperti logo */
+      border-bottom: 2px solid #ff9800; /* Garis bawah saat hover */
+    }
+
+    /* Navbar height adjustment */
+    .navbar-expand-lg {
+      height: 80px; /* Standar tinggi navbar */
+    }
+  </style>
 </head>
 <body>
   <div class="navbar navbar-expand-lg navbar-light">
     <div class="container-fluid">
-      <div class="logo"><img src="img/tools-and-utensils.png" alt="" class="logo-img">MotoXpert</div>
+      <div class="logo"><img src="img/tools-and-utensils.png" alt="" class="logo-img">
+        <span class="logo-text">MotoXpert</span>
+      </div>
       <div class="menu ml-auto">
         <a href="main.html">Home</a>
         <a href="diagnosis.html">Diagnosis</a>
@@ -20,46 +65,59 @@
     </div>
   </div>
 
-  <body>
-    <div class="hero">
-      <img src="img/19396.jpg" alt="">
-    </div>
-
   <div id="home" class="section">
     <div class="container text-center">
       <h1>Selamat Datang di Sistem Diagnosis Motor Matic</h1>
       <p class="intro mt-4">Website ini dirancang untuk membantu Anda mengidentifikasi dan menemukan solusi atas permasalahan pada motor matic Anda dengan cepat dan mudah.</p>
       <p class="intro">Mengapa website ini dibuat? Kami memahami bahwa banyak pengguna motor matic menghadapi kendala teknis yang sulit didiagnosa tanpa bantuan profesional. Dengan sistem ini, Anda dapat melakukan diagnosa awal secara mandiri sebelum menghubungi mekanik.</p>
       
-      <div class="row mt-5">
-        <div class="col-md-4 feature">
-          <div class="feature-icon">
-            <i class="fas fa-cogs"></i>
+      <div class="container my-5">
+        <h2 class="text-center mb-4 font-weight-bold">Kelebihan MotoXpert</h2>
+        <div class="row text-center">
+          <!-- Data Akurat -->
+          <div class="col-md-4">
+            <div class="p-4" style="background-color: #f8f9fa; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+              <div class="mb-3">
+                <i class="fas fa-database" style="font-size: 40px; color: #ff9800;"></i>
+              </div>
+              <h3 class="font-weight-bold">Data Akurat</h3>
+              <p>Menggunakan data terkini untuk memberikan hasil diagnosa yang lebih akurat dan dapat diandalkan.</p>
+            </div>
           </div>
-          <h3><b> Interaktif & Mudah Digunakan </b></h3>
-          <p>Dilengkapi dengan fitur-fitur interaktif yang mempermudah Anda melakukan diagnosa.</p>
-        </div>
-        <div class="col-md-4 feature">
-          <div class="feature-icon">
-            <i class="fas fa-database"></i>
+
+          <!-- Interaktif & Mudah Digunakan -->
+          <div class="col-md-4">
+            <div class="p-4" style="background-color: #f8f9fa; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+              <div class="mb-3">
+                <i class="fas fa-cogs" style="font-size: 40px; color: #ff9800;"></i>
+              </div>
+              <h3 class="font-weight-bold">Interaktif & Mudah Digunakan</h3>
+              <p>Sistem ini dirancang untuk memudahkan Anda dalam melakukan diagnosa secara mandiri dengan fitur interaktif.</p>
+            </div>
           </div>
-          <h3><b> Data Akurat </b></h3>
-          <p>Sistem kami menggunakan data terkini untuk memberikan hasil diagnosa yang lebih tepat.</p>
-        </div>
-        <div class="col-md-4 feature">
-          <div class="feature-icon">
-            <i class="fas fa-clock"></i>
+      
+          <!-- Efisiensi Waktu -->
+          <div class="col-md-4">
+            <div class="p-4" style="background-color: #f8f9fa; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+              <div class="mb-3">
+                <i class="fas fa-clock" style="font-size: 40px; color: #ff9800;"></i>
+              </div>
+              <h3 class="font-weight-bold">Efisiensi Waktu</h3>
+              <p>Hemat waktu dengan mengetahui permasalahan motor Anda sebelum membawa ke bengkel.</p>
+            </div>
           </div>
-          <h3><b> Efisiensi Waktu </b></h3>
-          <p>Hemat waktu dengan mengetahui permasalahan sebelum membawa motor ke bengkel.</p>
         </div>
-      </div>
+      </div>      
 
       <!-- Button Diagnosis -->
       <div class="mt-2">
         <a href="diagnosis.html" class="btn btn-primary btn-lg">Mulai Diagnosis</a>
       </div>
     </div>
+  </div>
+
+  <div class="hero">
+    <img src="img/19396.jpg" alt="">
   </div>
 
   <script src="https://kit.fontawesome.com/a076d05399.js"></script>

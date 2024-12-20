@@ -1,7 +1,5 @@
-
 let gejala = {};
 let pertanyaanIndex = 0;
-
 
 const pertanyaanList = [
   { text: "Apakah motor Anda sulit dinyalakan menggunakan elektrik starter?", key: "starter_sulit" },
@@ -18,10 +16,10 @@ const pertanyaanList = [
   { text: "Apakah motor terasa tidak bertenaga saat dijalankan?", key: "motor_tidak_bertenaga" }
 ];
 
-
 function tampilkanPertanyaan() {
   if (pertanyaanIndex < pertanyaanList.length) {
     document.getElementById("pertanyaan").innerText = pertanyaanList[pertanyaanIndex].text;
+    document.getElementById("intro-text").innerText = "Silakan jawab pertanyaan berikut untuk memulai diagnosis:";
   } else {
     diagnosa();
   }
@@ -177,20 +175,43 @@ function diagnosa() {
   }
 
   if (hasil.length > 0) {
-    let hasilText = "Hasil Diagnosis:\n";
+    let hasilText = "";
     hasil.forEach((item, index) => {
-      hasilText += `${index + 1}. Kerusakan: ${item.kerusakan}\n`;
-      hasilText += `   Pertanyaan sebelumnya:\n`;
+      hasilText += `<div class="kerusakan-item">${index + 1}. Kerusakan: <strong>${item.kerusakan}</strong></div>`;
+      hasilText += `<div class="pertanyaan-sebelumnya">Pertanyaan sebelumnya:</div>`;
+
       item.jawaban.forEach(jawaban => {
-        hasilText += `   - ${jawaban.pertanyaan} : ${jawaban.jawaban}\n`;
+        hasilText += `<div class="jawaban-item">${jawaban.pertanyaan} : ${jawaban.jawaban}</div>`;
       });
-      hasilText += `   Nilai keyakinan: ${item.persentase}\n\n`;
+
+      hasilText += `<div class="persentase">Nilai keyakinan: ${item.persentase}</div>`;
     });
     hasilText += "Rekomendasi:\n" + rekomendasi.join('\n');
-    document.getElementById("hasil-diagnosis").innerText = hasilText;
+    document.getElementById("hasil-diagnosis").innerHTML = hasilText;
   } else {
     document.getElementById("hasil-diagnosis").innerText = "Tidak ada kerusakan yang terdeteksi berdasarkan jawaban Anda.";
   }
+
+  // Ubah teks intro menjadi hasil diagnosis
+  document.getElementById("intro-text").innerText = "Diagnosis Kerusakan Motor Anda yaitu:";
+
+  // Tampilkan elemen hasil diagnosis
+  document.getElementById("pertanyaan-container").style.display = "none";
+  document.getElementById("ulang-container").style.display = 'block';
+  document.getElementById("hasil-diagnosis-container").style.display = 'block'; // Menampilkan hasil
 }
 
+function ulangiDiagnosis() {
+  // Reset semua variabel
+  gejala = {};
+  pertanyaanIndex = 0;
+
+  // Reset tampilan
+  document.getElementById("pertanyaan-container").style.display = "block";
+  document.getElementById("intro-text").innerText = "Silakan jawab pertanyaan berikut untuk memulai diagnosis:";
+  document.getElementById("ulang-container").style.display = "none";
+  document.getElementById("hasil-diagnosis-container").style.display = "none";
+}
+
+// Memulai diagnosis
 tampilkanPertanyaan();

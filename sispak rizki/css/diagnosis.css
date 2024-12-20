@@ -55,3 +55,31 @@ button:hover {
     font-size: 18px;
     color: #d9534f;
 }
+
+/* Box untuk pertanyaan */
+#pertanyaan-container {
+    border: 2px dashed #007bff;  /* Garis putus-putus biru */
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+}
+
+  /* Box untuk hasil diagnosis */
+#hasil-diagnosis-container {
+    border: 2px dashed #28a745;  /* Garis putus-putus hijau */
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #e9f7e6;
+    margin-top: 20px;
+}
+
+  /* Box untuk ulangi diagnosis */
+#ulang-container {
+    border: 2px dashed #ff9800;  /* Garis putus-putus orange */
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #fff4e5;
+    margin-top: 20px;
+}
+
