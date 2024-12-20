@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diagnosis Motor Matic</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/diagnosis.css">
+  <style>
+    /* Navbar Styling */
+    .navbar {
+      background-color: #ffffff !important; /* Sama dengan container tengah */
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 10px 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-img {
+      height: 40px; /* Perkecil ukuran logo */
+    }
+
+    .logo-text {
+      margin-left: 10px; /* Beri jarak lebih kanan terhadap logo */
+      font-weight: bold; /* Tulisan bold */
+      color: #3a4d70;
+      font-size: 1.2rem;
+    }
+
+    .menu a {
+      text-decoration: none;
+      color: #3a4d70;
+      font-weight: bold;
+      margin: 0 10px;
+      transition: color 0.3s ease, border-bottom 0.3s ease;
+      border-bottom: 2px solid transparent;
+    }
+
+    .menu a:hover {
+      color: #ff9800; /* Warna orange seperti logo */
+      border-bottom: 2px solid #ff9800; /* Garis bawah saat hover */
+    }
+
+    /* Navbar height adjustment */
+    .navbar-expand-lg {
+      height: 80px; /* Standar tinggi navbar */
+    }
+
+    .kerusakan-item {
+      margin-bottom: 15px; /* Memberikan jarak antar item kerusakan */
+    }
+
+    .pertanyaan-sebelumnya {
+      font-weight: bold; /* Membuat teks 'Pertanyaan sebelumnya' tebal */
+      margin-top: 10px; /* Jarak atas sebelum pertanyaan sebelumnya */
+      margin-bottom: 5px; /* Jarak bawah setelah 'Pertanyaan sebelumnya' */
+    }
+
+    .jawaban-item {
+      margin-bottom: 5px; /* Memberikan jarak antar jawaban */
+    }
+
+    .persentase {
+      margin-top: 10px; /* Memberikan jarak atas sebelum persentase */
+      margin-bottom: 30px; /* Memberikan jarak bawah setelah persentase */
+      font-weight: bold; /* Membuat teks menjadi tebal */
+    }
+
+    #hasil-diagnosis {
+      font-size: 1rem; /* Mengurangi ukuran font */
+      line-height: 1.5; /* Menjaga jarak antar baris agar lebih nyaman dibaca */
+    }
+
+    #hasil-diagnosis-container {
+      display: none;
+      max-width: 100%; /* Lebar lebih besar */
+      margin: 0 auto; /* Mengatur agar box tetap berada di tengah */
+    }
+
+    #ya-button {
+      margin-bottom: 5px; /* Tambahkan jarak di sebelah kanan tombol Ya */
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid">
+      <div class="logo">
+        <img src="img/tools-and-utensils.png" alt="" class="logo-img">
+        <span class="logo-text">MotoXpert</span>
+      </div>
+      <div class="menu ml-auto">
+        <a href="main.html">Home</a>
+        <a href="diagnosis.html">Diagnosis</a>
+        <a href="panduan.html">Panduan</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="container">
+      <h1 class="text-center font-weight-bold">Diagnosis Kerusakan Motor Matic</h1>
+
+      <!-- Intro text, dynamically updated -->
+      <p class="intro mt-4 text-center" id="intro-text">Silakan jawab pertanyaan berikut untuk memulai diagnosis:</p>
+
+      <div class="mt-4 text-center" id="pertanyaan-container">
+        <div id="pertanyaan-box">
+          <h3 id="pertanyaan"></h3>
+          <div class="mt-4">
+            <button class="btn btn-success mr-2" id="ya-button" onclick="jawab('ya')">Ya</button>
+            <button class="btn btn-danger mr-2" id="tidak-button" onclick="jawab('tidak')">Tidak</button>
+          </div>
+        </div>
+      </div>      
+
+      <div class="mt-4 text-center" id="hasil-diagnosis-container" style="display: none;">
+        <h3 id="intro-text-hasil"></h3>
+        <h3 id="hasil-diagnosis"></h3>
+      </div>
+
+      <!-- Pesan untuk mengulangi diagnosis -->
+      <div class="mt-4 text-center" id="ulang-container" style="display: none;">
+        <div id="ulang-box">
+          <p>Belum menemukan Diagnosa Kerusakan Motor Matic yang tepat?</p>
+          <button class="btn btn-warning" onclick="ulangiDiagnosis()">Ulangi</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="diagnosis.js"></script>
+</body>
+</html>
